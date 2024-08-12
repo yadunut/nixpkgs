@@ -302,10 +302,10 @@ with lib;
       autoResize = true;
       fsType = "ext4";
     };
-    fileSystems."/boot" = lib.mkIf hasBootPartition {
+    fileSystems."/boot" = lib.mkIf hasBootPartition (lib.mkDefault {
       device = "/dev/disk/by-label/ESP";
       fsType = "vfat";
-    };
+    });
 
     networking = mkIf cfg.cloudInit.enable {
       hostName = mkForce "";
