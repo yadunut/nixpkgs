@@ -297,7 +297,7 @@ with lib;
       initrd.availableKernelModules = [ "uas" "virtio_blk" "virtio_pci" ];
     };
 
-    fileSystems."/" = {
+    fileSystems."/" = lib.mkDefault {
       device = "/dev/disk/by-label/nixos";
       autoResize = true;
       fsType = "ext4";
